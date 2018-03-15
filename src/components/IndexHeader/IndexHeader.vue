@@ -76,18 +76,18 @@
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 .indexheader
+  position: fixed
   top 0
   .indexnav
     height 86px
     .headerbox
       width:100%;
-      padding 5px 10px
+      /*padding 5px 10px*/
       .top
        padding 8px 0
        background-color #fff
        text-align center
        >div
-         max-width 640px
          .left
            margin-right 20px
            font-size 14px

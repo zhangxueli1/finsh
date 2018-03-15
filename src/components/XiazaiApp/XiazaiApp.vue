@@ -27,7 +27,6 @@
           display none
           display block
           position relative
-          max-width 667px
           .close-btn
             >i
               position absolute

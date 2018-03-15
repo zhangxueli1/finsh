@@ -23,36 +23,34 @@ export default new VueRouter({
        component:ShouYe,
        children:[
          {
-           path:'/hospital',
+           path:'hospital',
            component:Hospital
          },
          {
-           path:'/food',
+           path:'food',
            component:Food
          },
          {
-           path:'/toy',
+           path:'toy',
            component:Toy
          },
          {
-           path:'/classify',
-           component:Classify
-         },
-         {
-           path:'/car',
-           component:Car
-         },
-         {
-           path:'/profile',
-           component:Profile
-         },
-         {
-           path:'/dress',
+           path:'dress',
            component:Dress
          },
        ]
      },
-
-
+     {
+       path:'/classify',
+       component:Classify
+     },
+     {
+       path:'/profile',
+       component:Profile
+     },
+     {
+       path:'/car',
+       component:Car
+     },
    ]
 })

@@ -1,15 +1,18 @@
 <template>
   <div id="app">
-   <shou-ye/>
+    <router-view/>
+    <FooterGuide/>
   </div>
 </template>
 
 <script>
 //  import XiazaiApp from './components/XiazaiApp/XiazaiApp.vue'
   import ShouYe from './pages/ShouYe/ShouYe.vue'
+import FooterGuide from './components/FooterGuide/FooterGuide.vue'
 export default {
 components:{
   ShouYe,
+  FooterGuide
 }
 }
 </script>

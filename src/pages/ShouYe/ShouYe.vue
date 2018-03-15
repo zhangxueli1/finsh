@@ -2,17 +2,15 @@
 <div class="index-box">
   <IndexHeader/>
   <Allcontent/>
-  <footer-guide/>
 </div>
 </template>
 <script>
   import IndexHeader from '../../components/IndexHeader/IndexHeader.vue'
-  import FooterGuide from '../../components/FooterGuide/FooterGuide.vue'
+//  import FooterGuide from '../../components/FooterGuide/FooterGuide.vue'
   import Allcontent from '../../components/Allcontent/Allcontent.vue'
   export default{
   components:{
     IndexHeader,
-    FooterGuide,
     Allcontent
   }
 }
