@@ -76,8 +76,6 @@
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 .indexheader
-  position: fixed
-  top 0
   .indexnav
     height 86px
     .headerbox

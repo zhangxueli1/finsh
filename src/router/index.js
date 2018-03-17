@@ -9,6 +9,8 @@ import Toy from '../pages/Toy/Toy.vue'
 import Classify from '../pages/Classify/Classify.vue'
 import Car from '../pages/Car/Car.vue'
 import Profile from '../pages/Profile/Profile.vue'
+import Fenlei from '../pages/Classify/children/Fenlei/Fenlei.vue'
+import Pinpai from '../pages/Classify/children/Pinpai/Pinpai.vue'
 
 Vue.use(VueRouter)
 
@@ -42,7 +44,21 @@ export default new VueRouter({
      },
      {
        path:'/classify',
-       component:Classify
+       component:Classify,
+       children:[
+         {
+           path:'',
+           redirect:'fenlei'
+         },
+         {
+           path:'fenlei',
+           component:Fenlei
+         },
+         {
+           path:'pinpai',
+           component:Pinpai
+         }
+       ]
      },
      {
        path:'/profile',

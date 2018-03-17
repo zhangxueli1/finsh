@@ -6,13 +6,16 @@
 </template>
 <script>
   import IndexHeader from '../../components/IndexHeader/IndexHeader.vue'
-//  import FooterGuide from '../../components/FooterGuide/FooterGuide.vue'
   import Allcontent from '../../components/Allcontent/Allcontent.vue'
+  import {mapState} from 'vuex'
   export default{
   components:{
     IndexHeader,
     Allcontent
-  }
+  },
+    created(){
+      this.$store.dispatch('getShouye')
+    }
 }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">

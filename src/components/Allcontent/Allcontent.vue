@@ -1,84 +1,30 @@
 <template>
-  <div class="allcontent">
+  <div class="allcontent" v-if="shouye.dog_banner">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="./images/slider1.jpg">
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slider2.jpg">
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slider3.jpg">
-        </div>
-        <div class="swiper-slide">
-          <img src="./images/slider4.jpg">
+        <div class="swiper-slide" v-for="(item,index) in shouye.dog_banner" :key="index">
+          <img :src="item">
         </div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
     <div class="bigimg">
       <div class="bigdog">
-        <img src="./images/bigdog.jpg">
+        <img :src="shouye.dog_img">
       </div>
     </div>
     <div class="small-list">
       <ul>
-        <li>
+        <li v-for="(item,index) in shouye.menu_list" :key="index">
         <a>
-          <img src="./images/small1.jpg">
+          <img :src="item">
         </a>
       </li>
-        <li>
-          <a>
-            <img src="./images/small2.jpg">
-          </a>
-        </li>
-        <li>
-          <a>
-            <img src="./images/small3.jpg">
-          </a>
-        </li>
-        <li>
-          <a>
-            <img src="./images/small4.jpg">
-          </a>
-        </li>
-        <li>
-          <a>
-            <img src="./images/small5.jpg">
-          </a>
-        </li>
-        <li>
-          <a>
-            <img src="./images/small1.jpg">
-          </a>
-        </li>
-        <li>
-          <a>
-            <img src="./images/small2.jpg">
-          </a>
-        </li>
-        <li>
-          <a>
-            <img src="./images/small3.jpg">
-          </a>
-        </li>
-        <li>
-          <a>
-            <img src="./images/small4.jpg">
-          </a>
-        </li>
-        <li>
-          <a>
-            <img src="./images/small5.jpg">
-          </a>
-        </li>
       </ul>
     </div>
     <div class="miao-sha">
      <div>
-        <img src="./images/miao-sha.jpg">
+        <img :src="shouye.miaosha">
       </div>
     </div>
     <div class="surprise">
@@ -161,36 +107,30 @@
       </div>
     </div>
     <div class="ping-pan">
-      <img src="./images/pinpai.jpg">
+      <img :src="shouye.brand_power">
     </div>
     <div class="dong-tu">
       <a>
-        <img src="./images/dong-tu.gif">
+        <img :src="shouye.gif">
       </a>
     </div>
     <div class="vip">
-      <img src="./images/vip.jpg">
+      <img :src="shouye.vip">
     </div>
     <div class="ling-yuan">
       <div class="left">
-        <a>
-          <img src="./images/xingji.jpg">
-        </a>
-        <a>
-          <img src="./images/zhuanpan1.jpg">
+        <a v-for="(i) in list.left">
+          <img :src="i">
         </a>
       </div>
       <div class="right">
-        <a>
-          <img src="./images/aichun.jpg">
-        </a>
-        <a>
-          <img src="./images/zhuanpan2.jpg">
+        <a v-for="(i) in list.right">
+          <img :src="i">
         </a>
       </div>
     </div>
     <div class="dapai">
-      <img src="./images/dapai.jpg">
+      <img :src="shouye.dapaituan">
     </div>
     <div class="tejia">
       <a>
@@ -198,11 +138,11 @@
       </a>
     </div>
     <div class="haohuo">
-      <img src="./images/haohuo.jpg">
+      <img :src="shouye.haohuo">
     </div>
     <div class="list">
-      <div class="one">
-        <div>
+      <div class="one" v-for="(items) in goods">
+        <div :class="items">
           <div class="left">
             <a>
               <img src="./images/list/1.jpg">
@@ -436,16 +376,22 @@
 <script>
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.css'
+  import {mapState} from 'vuex'
 
 export default{
   mounted(){
-      new Swiper ('.swiper-container', {
-      loop: true,
-      autoplay:true,
-    // 如果需要分页器
-      pagination: {
-        el: '.swiper-pagination',
-      }
+    this.$store.dispatch('getShouye',()=>{
+      this.$nextTick(()=>{
+        new Swiper ('.swiper-container', {
+          loop: true,
+          autoplay:true,
+          // 如果需要分页器
+          pagination: {
+            el: '.swiper-pagination',
+          }
+      })
+    })
+
   })
 
     var swiper = new Swiper('.swiper-container2', {
@@ -456,6 +402,69 @@ export default{
       },
     });
 
+  },
+  computed: {
+    ...mapState(['shouye']),
+    list(){
+      const left = []
+      const right = []
+      if(this.shouye.vip_services){
+        this.shouye.vip_services.forEach((item,index)=>{
+          if(index<2){
+            left.push(item)
+          }else{
+            right.push(item)
+          }
+        })
+        return {left,right}
+      }
+
+    },
+    goods(){
+      const arrBig = []
+      let arrSmall = null
+      if(this.shouye.haohuo_list){
+        this.shouye.haohuo_list.forEach((item,index) => {
+          if(!arrSmall){
+            arrSmall = []
+            arrBig.push(arrSmall)
+          }if(arrSmall.length<8){
+            arrSmall.push(item)
+          }if(arrSmall.length===8){
+            arrSmall = null
+          }
+
+        })
+        return arrBig
+      }
+      },
+    items(){
+      const arr = []
+      let arrSmall = null
+      if(this.shouye.haohuo_list){
+        this.shouye.haohuo_list.forEach((item,index) => {
+          if(!arrSmall){
+            arrSmall = []
+            arrBig.push(arrSmall)
+          }if(arrSmall.length<4){
+            arrSmall.push(item)
+          }if(arrSmall.length==4){
+            arrSmall = null
+          }
+
+        })
+        return arr
+      }
+    }
+
+
+  },
+  watch:{
+    shouye(){
+      this.$nextTick(() =>{
+
+      })
+    }
   }
   }
 </script>
