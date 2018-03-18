@@ -6,3 +6,5 @@ export const reqShouYe = () => ajax('/shouye')
 export const reqFenlei = () => ajax('/classify/fenlei')
 //获取品牌列表
 export const reqPinpai = () => ajax('/classify/pinpai')
+//获取全部分类
+export const reqTotal = () => ajax('/total')

@@ -16,6 +16,9 @@
         </ul>
       </div>
     </div>
+    <div class="all" @click="toTotal">
+      全部
+    </div>
   </div>
 </template>
 <script>
@@ -28,12 +31,19 @@
     mounted(){
       this.$store.dispatch('getPinpai')
     },
+    methods:{
+      toTotal(){
+        this.$router.push('/total')
+      }
+    }
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
  .pinpai
+  width 100%
   margin-top 40px
-  >div
+  overflow hidden
+  .one
     .top
       padding-top 20px
       text-align center
@@ -55,9 +65,8 @@
              width 100%
              display block
              text-align center
-             border: 1px solid #e2e2e2;
+             border 1px solid #e2e2e2
              >img
-               width 100%
                padding 5px 5px
                height 40px
                width 80px
@@ -67,4 +76,18 @@
           .small
              font-size 10px
              color grey
+
+  .all
+    width 40px
+    height 40px
+    right 8px
+    bottom 70px
+    position fixed
+    z-index 10
+    background rgba(0,0,0,.4)
+    line-height 40px
+    border-radius 50%
+    text-align center
+    font-size 13px
+    color #ffffff
 </style>

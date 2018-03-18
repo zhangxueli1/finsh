@@ -1,7 +1,8 @@
 import {
   RECEIVE_SHOUYE,
   RECEIVE_FENLEI,
-  RECEIVE_PINPAI
+  RECEIVE_PINPAI,
+  RECEIVE_TOTAL
 } from './mutation-types'
 
 export default {
@@ -14,5 +15,7 @@ export default {
   [RECEIVE_PINPAI](state, {pinpai}) {
     state.pinpai = pinpai
   },
-
+  [RECEIVE_TOTAL](state, {total}) {
+    state.total = total
+  },
 }

@@ -47,10 +47,10 @@
     z-index 100
     left 0
     right 0
-    bottom 23px
+    bottom 0px
     background-color #fff
     width 100%
-    height 45px
+    height 68px
     display flex
     .guide_item
       display flex

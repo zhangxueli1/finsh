@@ -77,7 +77,12 @@
 <style lang="stylus" rel="stylesheet/stylus">
 .indexheader
   .indexnav
-    height 86px
+    position fixed
+    z-index 100
+    left 0
+    right 0
+    top 0px
+    height 100%
     .headerbox
       width:100%;
       /*padding 5px 10px*/

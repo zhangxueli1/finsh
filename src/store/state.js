@@ -1,5 +1,6 @@
 export default {
 shouye:{},
 fenlei:[],
-pinpai:[]
+pinpai:[],
+total:[]
 }

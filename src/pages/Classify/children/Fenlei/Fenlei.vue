@@ -8,15 +8,15 @@
                 v-for="(item,index) in fenlei[0]" @click="switchColor(index)" :key="index">{{item.name}}</li>
           </ul>
         </div>
-        <div class="right" >
-            <div class="top" v-if="fenlei[1]" v-for="(items,index) in fenlei[1]" :key="index">
+        <div class="right" v-if="fenlei[1]" >
+            <div class="top" v-if="fenlei[1]">
               <a>
-                <span>{{items.title}}</span>
+                <span>{{fenlei[1][currindex][0].title}}</span>
                 <img src="../images/cate_right_img.png">
               </a>
               <div class="goods-wrapper">
-                <ul ref="goods">
-                  <li class="good" v-if="items.type===0" v-for="(item,index) in items.list" :key="index">
+                <ul ref="goods" v-if="fenlei[1][currindex][0]">
+                  <li class="good"  v-for="(item,index) in fenlei[1][currindex][0].list" :key="index">
                     <a>
                       <img :src="item.photo">
                       <span>{{item.name}}</span>
@@ -25,11 +25,11 @@
                 </ul>
               </div>
             </div>
-            <div class="btu" v-if="fenlei[1].type===2" v-for="(items,index) in fenlei[1]" :key="index">
-              <a>{{items.title}}</a>
-              <ul>
-                <li v-for="(items,index) in fenlei[1]">
-                  <a  v-if="items.type===2" v-for="(item) in items.list">
+            <div class="btu" v-if="fenlei[1][currindex][1]">
+              <a>{{fenlei[1][currindex][1].title}}</a>
+              <ul v-if="fenlei[1][currindex][1]">
+                <li v-for="(item,index) in fenlei[1][currindex][1].list" :key="index">
+                  <a>
                     <img :src="item.logo">
                     <span>{{item.name}}</span>
                   </a>
@@ -69,11 +69,6 @@
        new BScroll('.wrapper', {
          click: true //响应点击
        })
-//       // 右侧food列表的BScroll
-//       this.foodsScroll = new BScroll('.foods-wrapper',{
-//         probeType: 2, // 手指滑动(惯性滑动和编码滑动不监视)
-//         click: true //响应点击
-//       })
      },
      switchColor(index){
        this.currindex=index
@@ -157,13 +152,19 @@
                width 100%
                display flex
                flex-wrap wrap
+               margin-top 8px
                >li
-                 width 50%
+                 width 45%
+                 margin-right 11px
                  >a
                    display block
                    text-align center
+                   margin-bottom 10px
                    >img
-                     width 135px
+                     width 109px
+                     height 45px
+                     border 1px solid #e2e2e2
+                     padding 7px
                    >span
                      font-size 12px
                      color black

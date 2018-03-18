@@ -11,6 +11,7 @@ import Car from '../pages/Car/Car.vue'
 import Profile from '../pages/Profile/Profile.vue'
 import Fenlei from '../pages/Classify/children/Fenlei/Fenlei.vue'
 import Pinpai from '../pages/Classify/children/Pinpai/Pinpai.vue'
+import TotalBrand from '../pages/Classify/children/TotalBrand/TotalBrand.vue'
 
 Vue.use(VueRouter)
 
@@ -67,6 +68,10 @@ export default new VueRouter({
      {
        path:'/car',
        component:Car
+     },
+     {
+       path:'/total',
+       component:TotalBrand
      },
    ]
 })
