@@ -31,9 +31,9 @@ export default {
 
   },
   //所有品牌
-  async getTotalBrand({commit, state}) {
+  async getTotalBrand({commit, state},callback) {
     const result = await reqTotal()
     commit(RECEIVE_TOTAL, {total: result.data})
-
+    callback&&callback()
   },
 }
